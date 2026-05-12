@@ -16,6 +16,21 @@ Hãy hình dung đơn giản thế này:
 
 ---
 
+## Các cấp độ Big O cơ bản (Tổng hợp từ bài giảng)
+
+Dựa theo ghi chép trực quan trên bảng, chúng ta có các mức độ đo lường hiệu năng từ siêu nhanh cho tới cực chậm như sau:
+
+| Ký hiệu | Bản chất (Ghi chú bảng) | Ý nghĩa thực tế khi dữ liệu $N$ tăng lên |
+| :--- | :--- | :--- |
+| **O(1)** | **Cứng, không thay đổi** | Tốc độ giữ nguyên, bất chấp dữ liệu nhiều hay ít. |
+| **O(log n)** | **Chỉ thêm 1 bước** | Khi dữ liệu tăng gấp đôi, số bước xử lý chỉ cần tăng thêm 1. Cực kỳ ấn tượng! |
+| **O(n)** | **Gấp đôi công việc** | Dữ liệu tăng gấp đôi thì khối lượng tính toán cũng tăng tỷ lệ thuận gấp đôi. |
+| **O(n log n)** | *Mức tăng trung gian* | Tốc độ phổ biến của các thuật toán sắp xếp tiêu chuẩn (Nhanh, ổn định). |
+| **O(n^2)** | *Tăng bình phương* | Dữ liệu gấp đôi, khối lượng công việc lại tăng vọt lên gấp bốn. Bắt đầu nặng nề. |
+| **O(2^n)** | *Tăng cấp số nhân* | Khối lượng công việc tăng khủng khiếp. Đây là vùng nguy hiểm cần tuyệt đối tránh. |
+
+---
+
 ## Bảng tổng hợp các trường hợp thời gian (Time Complexity Cases)
 
 Dựa trên kiến thức đã cài đặt ở phần code, mỗi thuật toán đều có 3 kịch bản chính: Tốt nhất, Trung bình và Tệ nhất.
@@ -88,6 +103,16 @@ Quy trình xử lý gồm:
 1. Dùng thuật toán sắp xếp mặc định của ngôn ngữ (QuickSort/MergeSort): Mất khoảng **O(N log N)**.
 2. Lặp qua mảng spells và chạy Binary Search trên mảng potions: Tốn N \* O(log M).
    -> **Độ phức tạp tổng thể:** Quy về khoảng **O(N log N)**.
+
+---
+
+## Mở rộng: Phân tích trường hợp O(2^n) (Từ bảng ghi chú)
+
+Dù chưa xuất hiện trong 3 bài thực hành trên, nhưng đây là một trường hợp cực kỳ quan trọng được đề cập trên bảng mà chúng ta cần nắm được.
+
+- **Bản chất:** Đây là độ phức tạp dạng hàm mũ. Cứ mỗi khi lượng phần tử N tăng thêm 1 đơn vị, khối lượng công việc sẽ lại... TĂNG GẤP ĐÔI.
+- **Hình dung thực tế:** Hãy tưởng tượng bài toán tìm tất cả các tập con của một tập hợp, hoặc giải bài toán Fibonacci bằng đệ quy không tối ưu. Chỉ với N=30, số phép tính đã lên tới hơn 1 Tỷ bước. 
+- **Lời khuyên:** Đây chính là "vùng báo động đỏ" của hiệu năng. Khi thiết kế, nếu phát hiện thuật toán đang rơi vào O(2^n), chúng ta phải ngay lập tức tìm giải pháp tối ưu hơn (ví dụ dùng Quy hoạch động) để đưa nó về các mức độ thấp hơn đã học phía trên.
 
 ---
 
