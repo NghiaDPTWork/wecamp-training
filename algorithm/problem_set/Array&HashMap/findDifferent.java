@@ -51,19 +51,19 @@ class Solution {
 }
 
 //// cách 2
-class Solution2 {
+class Solution {
     public char findTheDifference(String s, String t) {
-        int frequencySum = 0;
+        int sumCharacter = 0;
 
-        // Vì t dài hơn s
+
         for(int i = 0; i <= t.length() - 1; i++){
-            frequencySum += t.charAt(i);
+            sumCharacter += t.charAt(i);
         }
 
         for(int i = 0; i <= s.length() - 1; i++){
-            frequencySum -= s.charAt(i);
+            sumCharacter -= s.charAt(i);
         }
 
-        return (char) frequencySum;
+        return (char) sumCharacter;
     }
 }
