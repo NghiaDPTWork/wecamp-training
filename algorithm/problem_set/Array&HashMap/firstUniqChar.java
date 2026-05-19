@@ -56,17 +56,16 @@ class Solution {
 }
 
 //// cách 2
-class Solution2 {
+class Solution {
     public int firstUniqChar(String s) {
-        int[] frequency = new int[26];
-        int len = s.length();
+        int[] frequent = new int[26];
 
-        for (int i = 0; i < len; i++) {
-            frequency[s.charAt(i) - 'a']++;
-        }
+        for(int i = 0; i <= s.length() - 1; i++){
+            frequent[s.charAt(i) - 'a']++;
+        } 
 
-        for (int i = 0; i < len; i++) {
-            if (frequency[s.charAt(i) - 'a'] == 1) {
+        for(int i = 0; i <= s.length() - 1; i++){
+            if(frequent[s.charAt(i) - 'a'] == 1){
                 return i;
             }
         }
