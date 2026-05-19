@@ -30,23 +30,23 @@ import java.util.Arrays;
 
 class Solution {
     public int majorityElement(int[] nums) {
-        int count = 0;
-        int value = 0;
         int i = 0;
+        int persistent = 0;
+        int soldiers = 0;
         int len = nums.length;
 
         while(i <= len - 1){
-            if(count == 0){
-                value = nums[i];
+            if(soldiers == 0){
+                persistent = nums[i];
             }
-            if(nums[i] == value){
-                count++;
+            if(nums[i] == persistent){
+                soldiers++;
             }else{
-                count--;
+                soldiers--;
             }
             i++;
         }
-        return value;
+        return persistent;
     }
 }
 
