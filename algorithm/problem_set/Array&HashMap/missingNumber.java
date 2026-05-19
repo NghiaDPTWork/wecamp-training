@@ -44,7 +44,6 @@ class Solution2 {
     public int missingNumber(int[] nums) {
         int len = nums.length;
 
-        // Tính tổng kỳ vọng từ 0 đến n
         int expectedSum = len * (len + 1) / 2;
 
         int actualSum = 0;
