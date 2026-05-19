@@ -32,11 +32,9 @@ class Solution {
 
         for(int i = 0; i <= nums.length - 1; i++){
             expectValue = target - nums[i];
-
             if(myMap.containsKey(expectValue)){
                 return new int[] {myMap.get(expectValue), i};
             }
-
             myMap.put(nums[i], i);
         }
         return new int[] {};
