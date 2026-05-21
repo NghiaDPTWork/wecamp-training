@@ -26,6 +26,10 @@ function App() {
     setTodos([newTodo, ...todos]);
   };
 
+  const handleDeleteTodo = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <div className="container">
       <div className="header">
@@ -34,7 +38,7 @@ function App() {
       <TodoForm onAdd={handleAddTodo} />
       <div className="todo-grid">
         {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem key={todo.id} todo={todo} onDelete={handleDeleteTodo} />
         ))}
       </div>
     </div>

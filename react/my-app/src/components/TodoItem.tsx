@@ -8,9 +8,10 @@ interface Todo {
 
 interface TodoItemProps {
   todo: Todo;
+  onDelete: (id: number) => void;
 }
 
-export function TodoItem({ todo }: TodoItemProps) {
+export function TodoItem({ todo, onDelete }: TodoItemProps) {
   return (
     <div className={`todo-item ${todo.completed ? "completed" : ""}`}>
       <div className="todo-content">
@@ -18,6 +19,14 @@ export function TodoItem({ todo }: TodoItemProps) {
         <span className="todo-status">
           {todo.completed ? "Completed" : "Pending"}
         </span>
+      </div>
+      <div className="todo-actions">
+        <button
+          onClick={() => onDelete(todo.id)}
+          className="todo-delete-btn"
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
