@@ -1,0 +1,51 @@
+.todo-item {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.todo-item.completed {
+  border-left: 4px solid #10b981;
+}
+
+.todo-item:not(.completed) {
+  border-left: 4px solid #f59e0b;
+}
+
+.todo-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.todo-status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  align-self: flex-start;
+}
+
+.todo-item.completed .todo-status {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.todo-item:not(.completed) .todo-status {
+  background-color: #fef3c7;
+  color: #92400e;
+}
