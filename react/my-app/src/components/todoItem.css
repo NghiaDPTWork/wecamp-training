@@ -28,7 +28,6 @@
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--text);
-  margin-bottom: 8px;
   word-break: break-word;
 }
 
@@ -38,6 +37,7 @@
   padding: 4px 8px;
   border-radius: 6px;
   align-self: flex-start;
+  margin-top: 8px;
 }
 
 .todo-item.completed .todo-status {
@@ -73,5 +73,112 @@
 }
 
 .todo-delete-btn:active {
+  transform: scale(0.95);
+}
+
+.todo-header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.text-strike {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.todo-edit-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.todo-edit-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.todo-edit-input:focus {
+  border-color: var(--primary);
+}
+
+.todo-save-btn {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.todo-save-btn:hover {
+  background-color: #059669;
+}
+
+.todo-save-btn:active {
+  transform: scale(0.95);
+}
+
+.todo-cancel-btn {
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.todo-cancel-btn:hover {
+  background-color: #4b5563;
+}
+
+.todo-cancel-btn:active {
+  transform: scale(0.95);
+}
+
+.todo-edit-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.todo-edit-btn:hover {
+  background-color: #2563eb;
+}
+
+.todo-edit-btn:active {
   transform: scale(0.95);
 }

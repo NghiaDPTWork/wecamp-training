@@ -30,6 +30,14 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const handleUpdateTodo = (id: number, updatedFields: Partial<Todo>) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, ...updatedFields } : todo
+      )
+    );
+  };
+
   return (
     <div className="container">
       <div className="header">
@@ -38,7 +46,12 @@ function App() {
       <TodoForm onAdd={handleAddTodo} />
       <div className="todo-grid">
         {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} onDelete={handleDeleteTodo} />
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onDelete={handleDeleteTodo}
+            onUpdate={handleUpdateTodo}
+          />
         ))}
       </div>
     </div>
