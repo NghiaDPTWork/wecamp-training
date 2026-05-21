@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { TodoItem } from "./components/TodoItem";
+import { TodoForm } from "./components/TodoForm";
 
 interface Todo {
   id: number;
@@ -16,11 +17,21 @@ function App() {
       .then((data) => setTodos(data));
   }, []);
 
+  const handleAddTodo = (title: string) => {
+    const newTodo: Todo = {
+      id: Date.now(),
+      title,
+      completed: false,
+    };
+    setTodos([newTodo, ...todos]);
+  };
+
   return (
     <div className="container">
       <div className="header">
         <h1>Todo Application</h1>
       </div>
+      <TodoForm onAdd={handleAddTodo} />
       <div className="todo-grid">
         {todos.map((todo) => (
           <TodoItem key={todo.id} todo={todo} />
