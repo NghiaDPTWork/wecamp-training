@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { TodoItem } from "./components/TodoItem";
 import { TodoForm } from "./components/TodoForm";
 import { SearchFilter } from "./components/SearchFilter";
+import { Pagination } from "./components/Pagination";
 
 interface Todo {
   id: number;
@@ -12,6 +13,8 @@ interface Todo {
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const todosPerPage = 6;
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos?_limit=20")
@@ -26,6 +29,7 @@ function App() {
       completed: false,
     };
     setTodos([newTodo, ...todos]);
+    setCurrentPage(1);
   };
 
   const handleDeleteTodo = (id: number) => {
@@ -40,8 +44,28 @@ function App() {
     );
   };
 
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
   const filteredTodos = todos.filter((todo) =>
     todo.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredTodos.length / todosPerPage);
+  const activePage = Math.max(1, Math.min(currentPage, totalPages));
+
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(totalPages);
+    }
+  }, [filteredTodos.length, totalPages, currentPage]);
+
+  const startIndex = (activePage - 1) * todosPerPage;
+  const paginatedTodos = filteredTodos.slice(
+    startIndex,
+    startIndex + todosPerPage
   );
 
   return (
@@ -50,9 +74,9 @@ function App() {
         <h1>Todo Application</h1>
       </div>
       <TodoForm onAdd={handleAddTodo} />
-      <SearchFilter query={searchQuery} onChange={setSearchQuery} />
+      <SearchFilter query={searchQuery} onChange={handleSearchChange} />
       <div className="todo-grid">
-        {filteredTodos.map((todo) => (
+        {paginatedTodos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
@@ -61,6 +85,11 @@ function App() {
           />
         ))}
       </div>
+      <Pagination
+        currentPage={activePage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 }
