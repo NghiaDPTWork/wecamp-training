@@ -116,3 +116,9 @@ body {
 .todo-button:active {
   transform: scale(0.98);
 }
+
+.search-filter {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+}

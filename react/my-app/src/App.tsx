@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { TodoItem } from "./components/TodoItem";
 import { TodoForm } from "./components/TodoForm";
+import { SearchFilter } from "./components/SearchFilter";
 
 interface Todo {
   id: number;
@@ -10,6 +11,7 @@ interface Todo {
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos?_limit=20")
@@ -38,14 +40,19 @@ function App() {
     );
   };
 
+  const filteredTodos = todos.filter((todo) =>
+    todo.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="container">
       <div className="header">
         <h1>Todo Application</h1>
       </div>
       <TodoForm onAdd={handleAddTodo} />
+      <SearchFilter query={searchQuery} onChange={setSearchQuery} />
       <div className="todo-grid">
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
