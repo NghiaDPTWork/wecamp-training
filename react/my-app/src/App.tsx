@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { TodoItem } from "./components/TodoItem";
 
 interface Todo {
   id: number;
@@ -16,13 +17,13 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Todo Application</h1>
-      <div>
+    <div className="container">
+      <div className="header">
+        <h1>Todo Application</h1>
+      </div>
+      <div className="todo-grid">
         {todos.map((todo) => (
-          <div key={todo.id}>
-            <span>{todo.title}</span>
-          </div>
+          <TodoItem key={todo.id} todo={todo} />
         ))}
       </div>
     </div>
