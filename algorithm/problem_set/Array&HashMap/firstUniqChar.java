@@ -56,7 +56,7 @@ class Solution {
 }
 
 //// cách 2
-class Solution {
+class Solution2 {
     public int firstUniqChar(String s) {
         int[] frequent = new int[26];
 

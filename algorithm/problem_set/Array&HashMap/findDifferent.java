@@ -51,7 +51,7 @@ class Solution {
 }
 
 //// cách 2
-class Solution {
+class Solution2 {
     public char findTheDifference(String s, String t) {
         int sumCharacter = 0;
 
