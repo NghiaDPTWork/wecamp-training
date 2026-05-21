@@ -1,3 +1,16 @@
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --radius: 12px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,52 +18,55 @@
 }
 
 body {
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
-  background-color: #f5f5f7;
-  color: #1d1d1f;
+  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.5;
   min-height: 100vh;
+  padding: 40px 20px;
 }
 
-#root > div {
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  gap: 16px;
+  gap: 24px;
+  width: 100%;
 }
 
-button {
-  font-size: 1rem;
-  padding: 10px 20px;
-  color: white;
-  background-color: #0071e3;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition:
-    background-color 0.2s,
-    transform 0.1s;
+.header {
+  text-align: center;
+  margin-bottom: 12px;
 }
 
-button:hover {
-  background-color: #0077ed;
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-button:active {
-  transform: scale(0.97);
+.todo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
 }
 
-p {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #515154;
-  margin-top: 8px;
+@media (min-width: 768px) {
+  .todo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .todo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
