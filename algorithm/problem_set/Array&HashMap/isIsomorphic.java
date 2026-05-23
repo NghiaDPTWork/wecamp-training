@@ -33,23 +33,27 @@ import java.util.Map;
 
 class Solution {
     public boolean isIsomorphic(String s, String t) {
-        if(s.length() != t.length()) return false;
+        if(s.length() != t.length())    return false;
 
-        int[] mapS = new int[256];
-        int[] mapT = new int[256];
+        int[] charS = new  int[256];
+        int[] charT = new int[256];
+        char characS = ' ';
+        char characT = ' ';
         int len = s.length();
 
         for(int i = 0; i <= len - 1; i++){
-            char charS = s.charAt(i);
-            char charT = t.charAt(i);
+            characS = s.charAt(i);
+            characT = t.charAt(i);
 
-            if(mapS[charS] != mapT[charT]){
+            if(charS[characS] != charT[characT]){
                 return false;
             }
 
-            mapS[charS] = i + 1;
-            mapT[charT] = i + 1;
+            // Tránh trùng vs idx = 0
+            charS[characS] = i + 1;
+            charT[characT] = i + 1;
         }
+
         return true;
     }
 }
