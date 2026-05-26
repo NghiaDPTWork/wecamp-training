@@ -1,23 +1,36 @@
-// Cho các kí hiệu lên, xuống, trái, phải 
-// hãy check true flase sao cho khi đi theo string mẫu được cho
-// thì có đi hết từ đầu đến đích hay không 
-/*
-    Nhóm tình huống:
-    1. Đi lên, xuống, trái, phải
-*/
-
-// Đề 2: 
+// ===========================================================================
+// ĐỀ BÀI: KIỂM TRA ĐƯỜNG ĐI TRÊN MA TRẬN (GRID PATH VALIDATION)
+// ===========================================================================
+// Cho một ma trận (mảng 2 chiều) gồm các ô trống (0) và vật cản (1).
+// Bạn được cung cấp:
+//   - Tọa độ xuất phát `start` dạng [dòng, cột].
+//   - Tọa độ đích `dest` dạng [dòng, cột].
+//   - Một chuỗi các ký tự đại diện cho các bước di chuyển (ví dụ: "RDDL").
+//
+// Nhiệm vụ của bạn là kiểm tra xem nếu đi theo đúng chuỗi di chuyển đó,
+// có đến được điểm đích thành công hay không.
+//
+// Các quy tắc di chuyển:
+//   - Các hệ ký hiệu được hỗ trợ:
+//       + Tiếng Anh: 'U' (Lên), 'D' (Xuống), 'L' (Trái), 'R' (Phải)
+//       + Tiếng Việt: 'L' (Lên), 'X' (Xuống), 'T' (Trái), 'P' (Phải)
+//       + Mũi tên: '↑', '↓', '←', '→'
+//   - Trả về FALSE nếu:
+//       + Di chuyển vượt ra ngoài biên của ma trận.
+//       + Di chuyển vào ô chứa vật cản (ô có giá trị là 1).
+//       + Gặp ký tự di chuyển không hợp lệ.
+//       + Đi hết chuỗi di chuyển nhưng không dừng đúng tại tọa độ đích `dest`.
+//   - Trả về TRUE nếu:
+//       + Đi hết chuỗi di chuyển an toàn và dừng chính xác tại tọa độ đích `dest`.
+// ===========================================================================
 
 // HƯỚNG GIẢI:
 // 1. Khởi tạo vị trí hiện tại bằng vị trí xuất phát start (currRow, currCol).
 // 2. Duyệt qua từng ký tự trong chuỗi di chuyển (moves).
-// 3. Giải mã ký tự thành hướng di chuyển cụ thể:
-//    - Tiếng Anh: U (Lên), D (Xuống), L (Trái), R (Phải)
-//    - Tiếng Việt: L (Lên), X (Xuống), T (Trái), P (Phải)
-//    - Mũi tên: ↑, ↓, ←, →
+// 3. Giải mã ký tự thành hướng di chuyển tương ứng dựa trên hệ ký hiệu (detectScheme).
 // 4. Kiểm tra điều kiện an toàn sau mỗi bước đi:
-//    - Tọa độ mới phải nằm trong phạm vi ma trận (0 <= row < maxRows, 0 <= col < maxCols).
-//    - Ô tại tọa độ mới không phải là vật cản (grid[row][col] != 1).
+//    - Tọa độ mới nằm trong ma trận (0 <= row < maxRows, 0 <= col < maxCols).
+//    - Ô tại tọa độ mới không phải vật cản (grid[row][col] != 1).
 //    - Nếu vi phạm bất kỳ điều kiện nào, trả về false ngay lập tức.
 // 5. Sau khi đi hết chuỗi di chuyển, kiểm tra xem vị trí cuối cùng có khớp với tọa độ đích hay không.
 
