@@ -56,7 +56,8 @@ public class topic {
             int[] offset = getDirectionOffset(move, scheme);
             
             if (offset == null) {
-                return false; // Ký tự di chuyển không hợp lệ
+                return false; 
+                // Ký tự di chuyển không hợp lệ
             }
 
             currRow += offset[0];
