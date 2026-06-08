@@ -2,12 +2,12 @@
  * Binary Search Algorithm implementation in JavaScript.
  * Tìm kiếm nhị phân là thuật toán tìm kiếm hiệu quả trên một MẢNG ĐÃ ĐƯỢC SẮP XẾP.
  * Thuật toán hoạt động bằng cách chia đôi khoảng tìm kiếm liên tục.
- * 
+ *
  * Độ phức tạp thời gian (Time Complexity):
  * - Tốt nhất (Best Case): O(1) - phần tử cần tìm nằm ngay giữa mảng ở lượt đầu tiên.
  * - Trung bình (Average Case): O(log n)
  * - Tệ nhất (Worst Case): O(log n)
- * 
+ *
  * Độ phức tạp không gian (Space Complexity): O(1) - sử dụng phiên bản lặp (iterative).
  */
 
@@ -33,7 +33,7 @@ function binarySearch(arr, target) {
     // 2. Nếu target lớn hơn phần tử ở giữa, bỏ qua nửa bên trái
     if (arr[mid] < target) {
       left = mid + 1;
-    } 
+    }
     // 3. Nếu target nhỏ hơn phần tử ở giữa, bỏ qua nửa bên phải
     else {
       right = mid - 1;
